@@ -1,27 +1,41 @@
+console.log("welcome to LIU Junyu s Page \n " + "Following is the first 100 prime numbre:");
 
-<html>
+var fs = require('fs');
+var outfile="prime.txt";
 
-<head>
-
-<script type="text/javascript">
-document.write("<b>Welcome </b> \n to liujunyu s Page\n")
-
-function disp_alert()
+var arr=[];
+var j=0;
+function prime(n)
 {
-alert("have a good day！")
+var q=parseInt(Math.sqrt(n));
+for ( var i=2;i<=q ;i++ )
+{
+if (n%i==0)
+{
+return false;
+}
 
 
+}
+return true;
 
+}
+var m;
+m=1;
+while (j<100)
+{
+m++;
 
+if (prime(m))
+{
+arr.push(m);
+j++;
+
+}
 }
 
 
 
-</script>
-</head>
-<body>
-
-<input type="button" onclick="disp_alert()" value="click me" />
-
-</body>
-</html>
+arr=arr.join(",");
+fs.writeFileSync(outfile,arr);
+console.log(arr);
